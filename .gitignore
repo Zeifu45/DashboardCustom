@@ -1,0 +1,61 @@
+# ==========================================
+# .NET / Visual Studio
+# ==========================================
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+[Bb]uild/
+[Pp]ublish/
+x64/
+x86/
+[Ll]og/
+[Ll]ogs/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# VS Code (si utilisé en parallèle)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ==========================================
+# Node.js / Angular
+# ==========================================
+# Dépendances (générées par npm install)
+node_modules/
+
+# Sorties de build Angular
+dist/
+.angular/
+
+# Logs et caches npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+
+# ==========================================
+# OS Files (Fichiers système)
+# ==========================================
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS / Linux
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~

@@ -1,0 +1,25 @@
+<div class="bg-white/[0.03] border border-white/5 rounded-[2.5rem] p-8 backdrop-blur-sm">
+  <div class="flex items-center justify-between mb-8">
+    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-teal-500/60">Audio &amp; Volume</h3>
+    <span class="text-2xl font-black text-white">{{ volume() }}%</span>
+  </div>
+
+  <div class="flex-1 bg-black/40 p-2 rounded-2xl flex gap-1 border border-white/5 mb-8">
+    <button type="button" (click)="setDevice('G560')"
+            [class.active]="isG560()"
+            class="audio-btn flex-1 py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-[10px] font-black uppercase text-slate-400 hover:bg-white/5">
+      <i class="fa-solid fa-volume-high"></i> G560
+    </button>
+    <button type="button" (click)="setDevice('Realtek')"
+            [class.active]="isRealtek()"
+            class="audio-btn flex-1 py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-[10px] font-black uppercase text-slate-400 hover:bg-white/5">
+      <i class="fa-solid fa-headphones"></i> Realtek
+    </button>
+  </div>
+
+  <div class="relative flex items-center gap-6 px-2">
+    <i class="fa-solid fa-volume-off text-slate-600 text-xs"></i>
+    <input type="range" min="0" max="100" [value]="volume()" (input)="onVolumeChange($event)" class="flex-1 accent-teal-500">
+    <i class="fa-solid fa-volume-high text-slate-600 text-xs"></i>
+  </div>
+</div>

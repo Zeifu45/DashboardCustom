@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.grid {
+  align-items: stretch;
+}
+
+  .grid > div, .grid > a {
+    min-height: 120px;
+  }

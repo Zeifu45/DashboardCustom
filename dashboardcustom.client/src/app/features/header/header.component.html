@@ -1,0 +1,73 @@
+<header class="p-8 flex items-center justify-between gap-8 z-10 flex-wrap">
+  <div class="flex-1 max-w-2xl flex items-center gap-4 min-w-[280px]">
+    <form action="https://www.google.com/search" method="GET" class="relative group flex-1">
+      <input type="text" name="q" placeholder="Rechercher sur Google..."
+             class="w-full bg-white/5 border border-white/10 py-4 px-14 rounded-2xl focus:outline-none focus:border-teal-500/50 transition-all text-lg placeholder-slate-600 text-white">
+      <i class="fa fa-search absolute left-6 top-1/2 -translate-y-1/2 text-slate-500"></i>
+    </form>
+    <div class="flex items-center gap-3">
+      <a href="https://gemini.google.com" target="_blank" rel="noopener"
+         class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500/10 transition-all group">
+        <img src="https://www.google.com/s2/favicons?sz=64&domain=google.com" alt="Gemini" class="w-6 h-6 opacity-60 group-hover:opacity-100">
+      </a>
+      <a href="https://chat.openai.com" target="_blank" rel="noopener"
+         class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500/10 transition-all group">
+        <img src="https://www.google.com/s2/favicons?sz=64&domain=openai.com" alt="ChatGPT" class="w-6 h-6 opacity-60 group-hover:opacity-100">
+      </a>
+      <a href="https://claude.ai" target="_blank" rel="noopener"
+         class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500/10 transition-all group">
+        <img src="https://www.google.com/s2/favicons?sz=64&domain=claude.ai" alt="Claude" class="w-6 h-6 opacity-60 group-hover:opacity-100">
+      </a>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-6 bg-[#0f111a]/80 px-8 py-4 rounded-[2.5rem] border border-white/5 shadow-2xl backdrop-blur-md flex-wrap justify-center">
+    <div class="flex gap-8 border-r border-white/10 pr-8">
+      <div class="flex flex-col items-center">
+        <span class="text-[10px] font-black uppercase text-slate-500 mb-1">CPU</span>
+        <span class="text-sm font-bold" [ngClass]="getUsageClass(cpu())">{{ cpu() }}%</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span class="text-[10px] font-black uppercase text-slate-500 mb-1">RAM</span>
+        <span class="text-sm font-bold" [ngClass]="getUsageClass(ram())">{{ ram() }}%</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span class="text-[10px] font-black uppercase text-slate-500 mb-1">GPU</span>
+        <span class="text-sm font-bold" [ngClass]="getUsageClass(gpu())">{{ gpu() }}%</span>
+      </div>
+    </div>
+    <div class="flex flex-col items-center border-r border-white/10 pr-8">
+      <span class="text-[10px] font-black uppercase text-slate-500 mb-1">Uptime</span>
+      <span class="text-sm font-bold text-teal-400">{{ uptime() }}</span>
+    </div>
+    <div class="flex flex-col items-center border-r border-white/10 pr-8">
+      <span class="text-[10px] font-black uppercase text-slate-500 mb-1">Date</span>
+      <span class="text-sm font-bold text-white">{{ currentDate() }}</span>
+    </div>
+    <div class="flex flex-col items-center border-r border-white/10 pr-8">
+      <span class="text-[10px] font-black uppercase text-slate-500 mb-1">Heure</span>
+      <span class="text-sm font-bold text-white">{{ currentTime() }}</span>
+    </div>
+    <div class="flex gap-6 items-center border-r border-white/10 pr-8">
+      <div class="flex flex-col items-center">
+        <i class="fa-solid fa-keyboard text-xs mb-1" [ngClass]="getBatteryClass(kbBattery())"></i>
+        <span class="text-xs font-bold" [ngClass]="getBatteryClass(kbBattery())">{{ kbBattery() < 0 ? 'N/A' : kbBattery() + '%' }}</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <i class="fa-solid fa-mouse text-xs mb-1" [ngClass]="getBatteryClass(mouseBattery())"></i>
+        <span class="text-xs font-bold" [ngClass]="getBatteryClass(mouseBattery())">{{ mouseBattery() < 0 ? 'N/A' : mouseBattery() + '%' }}</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <i class="fa-solid fa-gamepad text-xs mb-1" [ngClass]="getBatteryClass(xboxBattery())"></i>
+        <span class="text-xs font-bold" [ngClass]="getBatteryClass(xboxBattery())">{{ xboxBattery() < 0 ? 'N/A' : xboxBattery() + '%' }}</span>
+      </div>
+    </div>
+
+    <div class="flex items-center">
+      <button type="button" (click)="triggerConfig()"
+              class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-500/40 hover:bg-teal-500/10 flex items-center justify-center text-slate-400 hover:text-teal-400 transition-all cursor-pointer group">
+        <i class="fa-solid fa-gear text-base group-hover:rotate-90 transition-transform duration-300"></i>
+      </button>
+    </div>
+  </div>
+</header>

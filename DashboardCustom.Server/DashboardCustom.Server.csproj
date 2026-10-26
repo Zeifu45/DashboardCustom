@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<!--<OutputType>Exe</OutputType>-->
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<SpaRoot>..\dashboardcustom.client</SpaRoot>
+		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+		<SpaProxyServerUrl>https://localhost:52816</SpaProxyServerUrl>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+		<PackageReference Include="Microsoft.AspNetCore.SpaProxy">
+			<Version>10.*-*</Version>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.13" />
+		<PackageReference Include="NAudio.Wasapi" Version="3.3.0" />
+		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.13" />
+		<PackageReference Include="YeelightAPI" Version="1.10.2" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\dashboardcustom.client\dashboardcustom.client.esproj">
+			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+		</ProjectReference>
+	</ItemGroup>
+	<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+		<PropertyGroup>
+			<SpaRoot>..\dashboardcustom.client\</SpaRoot>
+			<SpaDistDir>$(SpaRoot)dist\dashboardcustom.client\browser</SpaDistDir>
+		</PropertyGroup>
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --configuration production" />
+		<ItemGroup>
+			<DistFiles Include="$(SpaDistDir)\**" />
+			<ResolvedFileToPublish Include="@(DistFiles)">
+				<RelativePath>wwwroot\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
+				<CopyToPublishDirectory>Always</CopyToPublishDirectory>
+				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
+</Project>

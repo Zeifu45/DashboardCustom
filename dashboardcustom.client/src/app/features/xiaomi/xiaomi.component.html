@@ -1,0 +1,39 @@
+<div class="bg-white/[0.03] border border-white/5 rounded-[2.5rem] p-8 backdrop-blur-sm flex flex-col justify-between h-full">
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-teal-400">
+        <i class="fa-solid fa-lightbulb"></i>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-white">Xiaomi Desk Lamp</h3>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+          {{ poweredOn() ? 'Activée' : 'Désactivée' }}
+        </p>
+      </div>
+    </div>
+    <button type="button" (click)="togglePower()"
+            [class.bg-teal-500]="poweredOn()" [class.bg-white/10] ="!poweredOn()"
+            class="w-14 h-8 rounded-full transition-all relative p-1 flex items-center">
+      <div [class.translate-x-6]="poweredOn()" [class.translate-x-0]="!poweredOn()"
+           class="w-6 h-6 rounded-full bg-white shadow-md transition-transform duration-300"></div>
+    </button>
+  </div>
+
+  <div class="mb-4">
+    <div class="flex justify-between items-center mb-2">
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Luminosité</span>
+      <span class="text-xs font-bold text-white">{{ brightness() }}%</span>
+    </div>
+    <div class="relative flex items-center">
+      <input type="range" min="0" max="100" [value]="brightness()" (input)="onBrightnessChange($event)" class="w-full accent-teal-500">
+    </div>
+  </div>
+
+  <div class="bg-black/40 px-4 py-3 rounded-2xl border border-white/5 flex items-center justify-between gap-2 overflow-x-auto custom-scrollbar">
+    <button *ngFor="let col of colors" type="button" (click)="setColor(col)"
+            [style.background-color]="col.hex"
+            [class.ring-2]="currentColorHex() === col.hex"
+            class="w-7 h-7 rounded-full flex-shrink-0 transition-all ring-teal-400 ring-offset-2 ring-offset-[#0f111a] hover:scale-110">
+    </button>
+  </div>
+</div>

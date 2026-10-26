@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #0a0b10 !important;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  color: #f8fafc;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+input, button, select, textarea {
+  outline: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(45, 212, 191, 0.2);
+  border-radius: 10px;
+}
+
+.tab-btn.active {
+  background: rgba(45, 212, 191, 0.1) !important;
+  color: #2dd4bf !important;
+  box-shadow: inset 0 0 20px rgba(45, 212, 191, 0.05);
+}

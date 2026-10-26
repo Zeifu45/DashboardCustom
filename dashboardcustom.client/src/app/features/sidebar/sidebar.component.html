@@ -1,0 +1,39 @@
+<aside class="w-72 flex-shrink-0 border-r border-white/5 bg-[#0f111a]/50 backdrop-blur-xl flex flex-col h-screen z-20">
+  <div class="p-8 flex flex-col flex-1 min-h-0">
+    <!-- Logo Header -->
+    <div class="flex items-center gap-4 mb-10">
+      <div class="w-12 h-12 bg-teal-500 rounded-2xl flex items-center justify-center shadow-lg shadow-teal-500/20">
+        <span class="text-slate-900 font-black text-2xl">Z</span>
+      </div>
+      <div>
+        <h1 class="text-3xl font-extrabold text-white tracking-tight">ZEIFU</h1>
+        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-teal-500/60">Dashboard Hub</p>
+      </div>
+    </div>
+
+    <!-- Dynamic Categories Navigation -->
+    <nav class="space-y-2 flex-1 overflow-y-auto custom-scrollbar">
+      <button *ngFor="let tab of categories()"
+              type="button"
+              (click)="onTabClick(tab.id)"
+              [class.active]="tab.id === activeTabId()"
+              class="tab-btn w-full flex items-center gap-4 py-4 px-6 rounded-2xl text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5">
+        <i [className]="'fa-solid ' + (tab.icon || 'fa-folder') + ' w-5 text-center'"></i>
+        <span>{{ tab.name }}</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- System Action Footer -->
+  <div class="p-8">
+    <div class="p-5 rounded-3xl bg-black/20 border border-white/5">
+      <p class="text-[10px] font-bold text-slate-500 uppercase mb-4 tracking-widest text-center">Système</p>
+      <button type="button"
+              (click)="restartExplorer()"
+              class="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-all text-xs font-bold uppercase border border-red-500/10">
+        <i class="fa-solid fa-rotate"></i>
+        Redémarrer Explorer
+      </button>
+    </div>
+  </div>
+</aside>

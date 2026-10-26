@@ -1,0 +1,40 @@
+<div class="space-y-6 pb-12">
+  <!-- Section Applications -->
+  <div *ngIf="filteredApps().length > 0">
+    <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-teal-500/60 mb-3">Applications</h4>
+    <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-3">
+      <div *ngFor="let app of filteredApps()"
+           class="bg-white/[0.03] border border-white/5 hover:border-teal-500/40 p-3 rounded-2xl backdrop-blur-sm flex flex-col items-center justify-center gap-2 transition-all cursor-pointer group"
+           (click)="launchApp(app)">
+        <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-teal-400 text-base group-hover:scale-110 transition-transform overflow-hidden">
+          <img *ngIf="app.iconFileName && app.iconFileName !== 'default.png'" [src]="getIconUrl(app.iconFileName)" class="w-5 h-5 object-contain">
+          <i *ngIf="!app.iconFileName || app.iconFileName === 'default.png'" class="fa-solid fa-cube"></i>
+        </div>
+        <span class="text-[11px] font-medium text-slate-300 text-center truncate w-full">{{ app.name }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Séparateur -->
+  <div *ngIf="filteredApps().length > 0 && filteredLinks().length > 0" class="border-t border-white/5 my-4"></div>
+
+  <!-- Section Liens Web -->
+  <div *ngIf="filteredLinks().length > 0">
+    <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-teal-500/60 mb-3">Liens Web</h4>
+    <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-3">
+      <a *ngFor="let link of filteredLinks()" [href]="link.url" target="_blank" rel="noopener"
+         class="bg-white/[0.03] border border-white/5 hover:border-teal-500/40 p-3 rounded-2xl backdrop-blur-sm flex flex-col items-center justify-center gap-2 transition-all group">
+        <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-teal-400 text-base group-hover:scale-110 transition-transform overflow-hidden">
+          <img *ngIf="link.iconFileName && link.iconFileName !== 'default.png'" [src]="getIconUrl(link.iconFileName)" class="w-5 h-5 object-contain">
+          <i *ngIf="!link.iconFileName || link.iconFileName === 'default.png'" class="fa-solid fa-globe"></i>
+        </div>
+        <span class="text-[11px] font-medium text-slate-300 text-center truncate w-full">{{ link.name }}</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- État vide -->
+  <div *ngIf="filteredApps().length === 0 && filteredLinks().length === 0" class="text-center py-8 text-slate-500 text-xs">
+    Aucun élément dans cette catégorie.
+  </div>
+</div>

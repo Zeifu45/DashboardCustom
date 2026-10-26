@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Éléments de solution/">
+    <File Path=".gitignore" />
+    <File Path="readme.md" />
+  </Folder>
+  <Project Path="dashboardcustom.client/dashboardcustom.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="DashboardCustom.Server/DashboardCustom.Server.csproj" />
+</Solution>
